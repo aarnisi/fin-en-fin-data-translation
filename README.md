@@ -27,11 +27,11 @@ In this section, we'll demonstrate how to use the `column` and `headers` classes
 | Parameter    | Description                                               | Mandatory |
 |--------------|-----------------------------------------------------------|-----------|
 | `df`         | The DataFrame you want to work with (Pandas/PySpark)      |    Yes    |
-| `column`     | The name of the column you want to perform actions on     |   *Yes    |   #This parameter must be empty when using `headers`
+| `column`     | The name of the column you want to perform actions on     |   *Yes    |  
 | `action`     | The translation action 'en-fi' / 'fi-en'                  |    Yes    |
 | `temperature`| An integer parameter (0-100)                              |    No     |
 | `max_length` | An integer parameter (0-200)                              |    No     |
-
+*`column` parameter must be empty when using `headers`
 
 ```python
 # Import the necessary libraries
