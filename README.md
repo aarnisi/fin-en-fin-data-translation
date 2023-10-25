@@ -8,6 +8,7 @@ This Python project provides a simple and efficient way to translate DataFrame h
 ## Table of Contents
 
 - [Installation](#installation)
+- [Prerequisites](#prerequisites)
 - [Usage](#usage)
 - [Examples](#examples)
 
@@ -34,6 +35,8 @@ In this section, we'll demonstrate how to use the `column` and `headers` classes
 | `max_length` | An integer parameter (0-200)                              |    No     |
 
 *`column` parameter must be empty when using `headers`
+
+## Examples
 
 ```python
 # Import the necessary libraries
