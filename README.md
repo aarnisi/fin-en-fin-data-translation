@@ -3,9 +3,7 @@ This repo helps you to translate dataframe headers or column values from fin-to-
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-This Python project provides a simple and efficient way to translate DataFrame headers and column values between Finnish and English. With two specialized classes, "column" and "headers," you can effortlessly handle translations to suit your multilingual data analysis needs. Classes support both Pandas and PySpark DataFrames and are customizable with adjustable temperature and maximum text length settings.
-
-It's possible to use both Pandas and PySpark dataframes.
+This Python project provides a simple and efficient way to translate DataFrame headers and column values between Finnish and English. With two specialized classes, "column" and "headers," you can effortlessly handle translations to suit your multilingual data analysis needs. Classes support both Pandas DataFrames and are customizable with adjustable temperature and maximum text length settings.
 
 ## Table of Contents
 
@@ -26,7 +24,7 @@ In this section, we'll demonstrate how to use the `column` and `headers` classes
 
 | Parameter    | Description                                               | Mandatory |
 |--------------|-----------------------------------------------------------|-----------|
-| `df`         | The DataFrame you want to work with (Pandas/PySpark)      |    Yes    |
+| `df`         | The DataFrame you want to work with (Pandas)              |    Yes    |
 | `column`     | The name of the column you want to perform actions on     |   *Yes    |  
 | `action`     | The translation action 'en-fi' / 'fi-en'                  |    Yes    |
 | `temperature`| An integer parameter (0-100)                              |    No     |

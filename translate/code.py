@@ -1,14 +1,9 @@
 import pandas as pd
 from transformers import pipeline, logging
-from pyspark.sql import SparkSession, DataFrame
-from pyspark.sql.types import StringType
 import warnings
 
 warnings.filterwarnings("ignore")
 logging.set_verbosity(logging.WARNING)
-# Create a Spark session
-spark = SparkSession.builder.appName("MyApp").getOrCreate()
-
 
 class column():
     def __init__(self, df, column: str, action: str, temperature: int = 0, max_length: int = 64):
@@ -24,10 +19,8 @@ class column():
 
         if self.type == 'pandas':
             self.df = self.PandasDF()
-        elif self.type == 'pyspark':
-            self.df = self.PySparkDF()
         else:
-            raise ValueError(f"Wrong input data format. It can be Pandas or PySpark dataframe only.")
+            raise ValueError(f"Wrong input data format. It can be Pandas dataframe only.")
 
     
     def ValidateInputs(self):
@@ -55,12 +48,8 @@ class column():
         # Check if the DataFrame is a Pandas DataFrame
         if isinstance(self.df, pd.DataFrame):
             self.type = 'pandas'
-            print('Pandas dataframe input detected')
-        elif isinstance(self.df, DataFrame):
-            self.type = 'pyspark'
-            print('PySpark dataframe input detected')
         else:
-            raise ValueError(f"Wrong input data format. It can be Pandas or PySpark dataframe only.")
+            raise ValueError(f"Wrong input data format. It can be Pandas dataframe only.")
 
 
 
@@ -84,14 +73,6 @@ class column():
         self.df[f'{self.column}_{self.langval}'] = self.df[self.column].apply(lambda x: self.model.predict(x)[0]['translation_text'])
         return self.df
     
-
-    def PySparkDF(self):
-        self.df = self.df.toPandas()
-        self.df[f'{self.column}_{self.langval}'] = self.df[self.column].apply(lambda x: self.model.predict(x)[0]['translation_text'])
-        self.df = spark.createDataFrame(self.df)
-        return self.df
-    
-
 
 
 
@@ -108,10 +89,8 @@ class headers():
 
         if self.type == 'pandas':
             self.df = self.PandasDF()
-        elif self.type == 'pyspark':
-            self.df = self.PySparkDF()
         else:
-            raise ValueError(f"Wrong input data format. It can be Pandas or PySpark dataframe only.")
+            raise ValueError(f"Wrong input data format. It can be Pandas dataframe only.")
 
     
     def ValidateInputs(self):
@@ -139,12 +118,8 @@ class headers():
         # Check if the DataFrame is a Pandas DataFrame
         if isinstance(self.df, pd.DataFrame):
             self.type = 'pandas'
-            print('Pandas dataframe input detected')
-        elif isinstance(self.df, DataFrame):
-            self.type = 'pyspark'
-            print('PySpark dataframe input detected')
         else:
-            raise ValueError(f"Wrong input data format. It can be Pandas or PySpark dataframe only.")
+            raise ValueError(f"Wrong input data format. It can be Pandas only.")
 
 
 
@@ -167,12 +142,4 @@ class headers():
     def PandasDF(self):
         for col in self.df.columns:
             self.df = self.df.rename(columns={col: self.model.predict(col)[0]['translation_text']})
-        return self.df
-    
-
-    def PySparkDF(self):
-        self.df = self.df.toPandas()
-        for col in self.df.columns:
-            self.df = self.df.rename(columns={col: self.model.predict(col)[0]['translation_text']})
-        self.df = spark.createDataFrame(self.df)
         return self.df

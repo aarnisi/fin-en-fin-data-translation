@@ -8,7 +8,5 @@ setup(
     install_requires=[
         'pandas'
        ,'transformers'
-       ,'pyspark'
-       ,'databricks-connect'
     ],
 )
