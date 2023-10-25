@@ -1,3 +1,2 @@
 pandas==1.4.4
 transformers==4.28.1
-TensorFlow==2.0
