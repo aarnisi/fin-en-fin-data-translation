@@ -7,7 +7,7 @@ import warnings
 warnings.filterwarnings("ignore")
 logging.set_verbosity(logging.WARNING)
 # Create a Spark session
-spark = SparkSession.builder.appName("PandasConversion").getOrCreate()
+spark = SparkSession.builder.appName("MyApp").getOrCreate()
 
 
 class column():
