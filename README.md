@@ -31,6 +31,7 @@ In this section, we'll demonstrate how to use the `column` and `headers` classes
 | `action`     | The translation action 'en-fi' / 'fi-en'                  |    Yes    |
 | `temperature`| An integer parameter (0-100)                              |    No     |
 | `max_length` | An integer parameter (0-200)                              |    No     |
+
 *`column` parameter must be empty when using `headers`
 
 ```python
