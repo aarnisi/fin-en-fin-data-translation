@@ -18,6 +18,9 @@ To use this Python project, you need to have Python installed on your system. Si
 python
 pip install git+https://github.com/aarnisi/fin-en-fin-data-translation
 
+## Prerequisites
+At least one of TensorFlow 2.0 or PyTorch should be installed. To install TensorFlow 2.0, read the instructions at https://www.tensorflow.org/install/ 
+
 ## Usage
 
 In this section, we'll demonstrate how to use the `column` and `headers` classes to perform operations on a DataFrame column. Parameters to use:
